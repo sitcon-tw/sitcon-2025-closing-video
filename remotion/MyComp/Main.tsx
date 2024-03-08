@@ -25,11 +25,6 @@ const container: React.CSSProperties = {
 
 export const Main = () => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-
-  const transitionStart = 2 * fps;
-  const transitionDuration = 1 * fps;
-
   const titleStyle: React.CSSProperties = useMemo(() => {
     return { fontSize: 128 };
   }, []);
