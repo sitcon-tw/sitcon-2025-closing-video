@@ -3,6 +3,7 @@ import { slide } from "@remotion/transitions/slide";
 import React from "react";
 import { AbsoluteFill, Img, interpolate, useCurrentFrame } from "remotion";
 import SessionData from "../../Data/sessions.json";
+import { Mic } from "lucide-react";
 
 const SpeakerItem = ({ speaker, index }: any) => {
   const frame = useCurrentFrame();
@@ -50,7 +51,7 @@ const SpeakerItem = ({ speaker, index }: any) => {
 
 export const Speaker = () => {
   const frame = useCurrentFrame();
-  const y = interpolate(frame, [0, 30], [100, 60]);
+  const y = interpolate(frame, [30, 60], [100, 80]);
   return (
     <AbsoluteFill
       style={{
@@ -66,18 +67,17 @@ export const Speaker = () => {
           durationInFrames={800}
           style={{ margin: "24px" }}
         >
-          <div
-            style={{
-              transform: `translateY(${y}px)`,
-            }}
-          >
+          <div style={{}}>
             <h1
               style={{
                 fontSize: 64,
                 textAlign: "center",
                 margin: 0,
+                transform: `translateY(${y}px)`,
               }}
             >
+              <Mic size={96} />
+              <br />
               議程講者
             </h1>
             <div
@@ -88,6 +88,7 @@ export const Speaker = () => {
                 alignItems: "flex-start",
                 justifyContent: "center",
                 padding: 24,
+                marginTop: 24,
               }}
             >
               {SessionData.speakers

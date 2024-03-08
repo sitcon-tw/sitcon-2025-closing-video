@@ -3,7 +3,7 @@ import { slide } from "@remotion/transitions/slide";
 import { AbsoluteFill, Img, interpolate, useCurrentFrame } from "remotion";
 import React from "react";
 import StaffData from "../../Data/staff.json";
-
+import { UsersRound } from "lucide-react";
 const GroupDescriptionLetter = ({
   text,
   index,
@@ -154,6 +154,16 @@ export const Staff = () => {
                   </h1>
 
                   <GroupDescription text={group.description} />
+                  <div
+                    style={{
+                      position: "absolute",
+                      bottom: 24,
+                      right: 24,
+                      opacity: 0.5,
+                    }}
+                  >
+                    <UsersRound size={128} strokeWidth={1.5} />
+                  </div>
                 </div>
                 <div
                   style={{

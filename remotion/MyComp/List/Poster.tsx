@@ -2,7 +2,7 @@ import { TransitionSeries, linearTiming } from "@remotion/transitions";
 import { slide } from "@remotion/transitions/slide";
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
-
+import { File } from "lucide-react";
 const AuthorItem = ({ author, index }: { author: string; index: number }) => {
   const frame = useCurrentFrame();
   const opacity = interpolate(frame, [index * 5 + 30, index * 5 + 60], [0, 1]);
@@ -72,6 +72,8 @@ export const Poster = () => {
                 transform: `translateY(${y}px)`,
               }}
             >
+              <File size={96} />
+              <br />
               海報作者
             </h1>
             {authors.map((author, index) => (

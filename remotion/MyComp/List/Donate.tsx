@@ -2,7 +2,7 @@ import { TransitionSeries, linearTiming } from "@remotion/transitions";
 import { slide } from "@remotion/transitions/slide";
 import React from "react";
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
-
+import { HandCoins } from "lucide-react";
 const NameItem = ({ author, index }: { author: string; index: number }) => {
   const frame = useCurrentFrame();
   const opacity = interpolate(frame, [index * 5 + 30, index * 5 + 60], [0, 1]);
@@ -79,6 +79,8 @@ export const Donate = () => {
                 transform: `translateY(${y}px)`,
               }}
             >
+              <HandCoins size={96} />
+              <br />
               個人贊助
             </h1>
             {authors.map((author, index) => (
