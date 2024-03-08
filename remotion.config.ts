@@ -5,6 +5,6 @@
 
 import { Config } from "@remotion/cli/config";
 
-Config.setVideoImageFormat("png");
 Config.setChromiumOpenGlRenderer("angle");
-Config.setColorSpace("bt709");
+
+Config.setVideoImageFormat("png");
