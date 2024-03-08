@@ -1,10 +1,4 @@
-import {
-  AbsoluteFill,
-  Sequence,
-  useCurrentFrame,
-  useVideoConfig,
-  Img,
-} from "remotion";
+import { AbsoluteFill, Sequence, useCurrentFrame, Img } from "remotion";
 
 import { loadFont, fontFamily } from "@remotion/google-fonts/NotoSansTC";
 import React, { useMemo } from "react";
