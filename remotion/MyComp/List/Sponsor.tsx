@@ -2,7 +2,7 @@ import { TransitionSeries, linearTiming } from "@remotion/transitions";
 import { slide } from "@remotion/transitions/slide";
 import React from "react";
 import sponsorData from "../../Data/sponsorData";
-import { AbsoluteFill, Img } from "remotion";
+import { AbsoluteFill, Img, interpolate, useCurrentFrame } from "remotion";
 
 const SponsorItem = ({
   title,
@@ -13,6 +13,13 @@ const SponsorItem = ({
   items: { title: string; image: string }[];
   style?: "large" | "mini";
 }) => {
+  const frame = useCurrentFrame();
+  const opacity = interpolate(frame, [30, 60, 240, 270], [0, 1, 1, 0]);
+  const y = interpolate(frame, [30, 60, 240, 270], [200, 0, 0, -200]);
+  const blur = Math.max(
+    interpolate(frame, [30, 60, 240, 270], [20, 0, 0, 20]),
+    0
+  );
   return (
     <div
       style={{
@@ -24,6 +31,9 @@ const SponsorItem = ({
         width: "1920px",
         padding: "24px",
         margin: "0 auto",
+        opacity,
+        transform: `translateY(${y}px)`,
+        filter: `blur(${blur}px)`,
       }}
     >
       <div

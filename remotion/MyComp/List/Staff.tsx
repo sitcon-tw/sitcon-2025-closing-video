@@ -15,7 +15,7 @@ const GroupDescriptionLetter = ({
   const opacity = interpolate(frame, [index * 2 + 30, index * 2 + 40], [0, 1]);
   const blur = Math.max(
     interpolate(frame, [index * 2 + 30, index * 2 + 40], [5, 0]),
-    0,
+    0
   );
 
   return (
@@ -51,7 +51,7 @@ const StaffItem = ({ member, index, many }: any) => {
   const y = interpolate(frame, [30, 60], many ? [300, 280] : [100, 80]);
   const blur = Math.max(
     interpolate(frame, [index * 5 + 30, index * 5 + 60], [10, 0]),
-    0,
+    0
   );
 
   return (
@@ -133,12 +133,13 @@ export const Staff = () => {
                 <div
                   style={{
                     width: "600px",
-                    backgroundColor: "rgba(255, 255, 255, 0.85)",
-                    backdropFilter: "blur(8px)",
+                    backgroundColor: "rgba(255, 255, 255, 0.5)",
+                    backdropFilter: "blur(16px)",
                     borderRadius: "24px",
                     padding: "24px",
                     height: `calc(100% - 48px * 2)`,
                     boxShadow: "0 0 24px rgba(0, 0, 0, 0.05)",
+                    position: "relative",
                   }}
                 >
                   <h1
