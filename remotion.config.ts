@@ -6,5 +6,5 @@
 import { Config } from "@remotion/cli/config";
 
 Config.setChromiumOpenGlRenderer("angle");
-
+Config.setCrf(16);
 Config.setVideoImageFormat("png");
