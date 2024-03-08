@@ -71,37 +71,37 @@ export const Main = () => {
         </TextFade>
       </Sequence>
 
-      <Sequence durationInFrames={800} from={4560 + 80}>
+      <Sequence durationInFrames={900} from={4560 + 80}>
         <Speaker />
       </Sequence>
 
-      <Sequence durationInFrames={80} from={5440}>
+      <Sequence durationInFrames={80} from={5540}>
         <TextFade>
           <h1 style={titleStyle}>海報作者</h1>
         </TextFade>
       </Sequence>
 
-      <Sequence durationInFrames={300} from={5440 + 80}>
+      <Sequence durationInFrames={300} from={5540 + 80}>
         <Poster />
       </Sequence>
 
-      <Sequence durationInFrames={80} from={5820}>
+      <Sequence durationInFrames={80} from={5920}>
         <TextFade>
           <h1 style={titleStyle}>合作夥伴</h1>
         </TextFade>
       </Sequence>
 
-      <Sequence durationInFrames={9 * 300 + 30} from={5900}>
+      <Sequence durationInFrames={9 * 300 + 30} from={6000}>
         <Sponsor />
       </Sequence>
 
-      <Sequence durationInFrames={80} from={8400}>
+      <Sequence durationInFrames={80} from={8500}>
         <TextFade>
           <h1 style={titleStyle}>個人贊助</h1>
         </TextFade>
       </Sequence>
 
-      <Sequence durationInFrames={300} from={8400 + 80}>
+      <Sequence durationInFrames={300} from={8500 + 80}>
         <Donate />
       </Sequence>
     </AbsoluteFill>
