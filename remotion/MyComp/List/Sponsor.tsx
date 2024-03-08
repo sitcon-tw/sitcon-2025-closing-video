@@ -62,6 +62,7 @@ const SponsorItem = ({
                 backgroundColor: "white",
                 borderRadius: "24px",
                 padding: "24px",
+                boxShadow: "0 0 24px rgba(0, 0, 0, 0.05)",
               }}
             >
               <Img
