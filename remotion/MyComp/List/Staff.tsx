@@ -1,8 +1,8 @@
-import { TransitionSeries, linearTiming } from "@remotion/transitions";
+import { linearTiming, TransitionSeries } from "@remotion/transitions";
 import { slide } from "@remotion/transitions/slide";
 import { AbsoluteFill, Img, interpolate, useCurrentFrame } from "remotion";
 import React from "react";
-import StaffData from "../../data/staff.json";
+import StaffData from "../../Data/staff.json";
 
 const GroupDescriptionLetter = ({
   text,
@@ -15,7 +15,7 @@ const GroupDescriptionLetter = ({
   const opacity = interpolate(frame, [index * 2 + 30, index * 2 + 40], [0, 1]);
   const blur = Math.max(
     interpolate(frame, [index * 2 + 30, index * 2 + 40], [5, 0]),
-    0
+    0,
   );
 
   return (
@@ -51,7 +51,7 @@ const StaffItem = ({ member, index, many }: any) => {
   const y = interpolate(frame, [30, 60], many ? [300, 280] : [100, 80]);
   const blur = Math.max(
     interpolate(frame, [index * 5 + 30, index * 5 + 60], [10, 0]),
-    0
+    0,
   );
 
   return (
