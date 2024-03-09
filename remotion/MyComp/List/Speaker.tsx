@@ -7,10 +7,14 @@ import { Mic } from "lucide-react";
 
 const SpeakerItem = ({ speaker, index }: any) => {
   const frame = useCurrentFrame();
-  const opacity = interpolate(frame, [index * 5 + 30, index * 5 + 60], [0, 1]);
+  const opacity = interpolate(
+    frame,
+    [index * 10 + 30, index * 10 + 60],
+    [0, 1]
+  );
   const y = interpolate(frame, [30, 60], [100, 80]);
   const blur = Math.max(
-    interpolate(frame, [index * 5 + 30, index * 5 + 60], [10, 0]),
+    interpolate(frame, [index * 10 + 30, index * 10 + 60], [10, 0]),
     0
   );
   return (
