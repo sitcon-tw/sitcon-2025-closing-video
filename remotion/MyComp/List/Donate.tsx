@@ -59,7 +59,7 @@ export const Donate = () => {
           timing={linearTiming({ durationInFrames: 30 })}
         />
         <TransitionSeries.Sequence
-          durationInFrames={300}
+          durationInFrames={400}
           style={{ margin: "24px" }}
         >
           <div

@@ -101,7 +101,7 @@ export const Main = () => {
         </TextFade>
       </Sequence>
 
-      <Sequence durationInFrames={300} from={8500 + 80}>
+      <Sequence durationInFrames={400} from={8500 + 80}>
         <Donate />
       </Sequence>
     </AbsoluteFill>
