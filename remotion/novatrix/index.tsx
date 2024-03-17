@@ -23,9 +23,6 @@ export function Novatrix(props: NovatrixProps) {
 
     function resize() {
       const scale = 1;
-      // camera.perspective({
-      //   aspect: gl.canvas.width / gl.canvas.height,
-      // });
       renderer.setSize(ctn.offsetWidth * scale, ctn.offsetHeight * scale);
     }
     window.addEventListener("resize", resize, false);
@@ -86,16 +83,15 @@ export function Novatrix(props: NovatrixProps) {
 
     let animateId: number;
 
-    animateId = requestAnimationFrame(update);
-
     function update(t: number) {
       animateId = requestAnimationFrame(update);
 
       program.uniforms.uTime.value = props.frame * 0.01;
 
-      // Don't need a camera if camera uniforms aren't required
       renderer.render({ scene: mesh });
     }
+
+    animateId = requestAnimationFrame(update);
 
     ctn.appendChild(gl.canvas);
     return () => {
@@ -104,7 +100,7 @@ export function Novatrix(props: NovatrixProps) {
       ctn.removeChild(gl.canvas);
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
-  }, []);
+  }, [props.frame]);
 
   return (
     <div

@@ -3,18 +3,16 @@
 import { Player } from "@remotion/player";
 import type { NextPage } from "next";
 import React from "react";
-import { Main } from "../remotion/MyComp/Main";
+import { Main } from "../remotion/SITCON2024ClosingVideo/Main";
 import {
   DURATION_IN_FRAMES,
   VIDEO_FPS,
   VIDEO_HEIGHT,
   VIDEO_WIDTH,
 } from "../types/constants";
-import { Tips } from "../components/Tips/Tips";
-import { Spacing } from "../components/Spacing";
 
 const container: React.CSSProperties = {
-  maxWidth: 768,
+  maxWidth: 1024,
   margin: "auto",
   marginBottom: 20,
 };
@@ -48,11 +46,6 @@ const Home: NextPage = () => {
             loop
           />
         </div>
-        <Spacing></Spacing>
-        <Spacing></Spacing>
-        <Spacing></Spacing>
-        <Spacing></Spacing>
-        <Tips></Tips>
       </div>
     </div>
   );

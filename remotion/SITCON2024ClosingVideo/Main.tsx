@@ -37,7 +37,7 @@ export const Main = () => {
           opacity: 0.25,
         }}
       >
-        <Novatrix frame={frame} key={frame} />
+        <Novatrix frame={frame} />
       </div>
       <Sequence>
         <div
