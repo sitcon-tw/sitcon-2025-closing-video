@@ -37,6 +37,7 @@ const SpeakerItem = ({ speaker, index }: any) => {
           height: "128px",
           borderRadius: "9999em",
           boxShadow: "0 0 24px rgba(0, 0, 0, 0.05)",
+          objectFit: "cover",
         }}
       />
       <div
