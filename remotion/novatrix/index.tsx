@@ -1,5 +1,4 @@
 import styles from "./styles.module.css";
-
 import { Renderer, Program, Mesh, Color, Triangle } from "ogl";
 import React from "react";
 import { useEffect, useRef } from "react";
@@ -19,7 +18,7 @@ export function Novatrix(props: NovatrixProps) {
     const ctn = ctnDom.current;
     const renderer = new Renderer();
     const gl = renderer.gl;
-    gl.clearColor(1, 1, 1, 1);
+    gl.clearColor(0.0, 0.0, 0.5, 1.0); // 深藍背景
 
     function resize() {
       const scale = 1;
@@ -44,67 +43,36 @@ export function Novatrix(props: NovatrixProps) {
       fragment: `precision highp float;
 
       uniform float uTime;
-      uniform vec3 uColor;
       uniform vec3 uResolution;
-
       varying vec2 vUv;
 
-      // 改進的噪聲函數
-      float noise(vec2 p) {
-          return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
+      float grid(vec2 uv, float battery) {
+          vec2 size = vec2(uv.y, uv.y * uv.y * 0.2) * 0.01;
+          uv += vec2(0.0, uTime * 4.0 * (battery + 0.05));
+          uv = abs(fract(uv) - 0.5);
+          vec2 lines = smoothstep(size, vec2(0.0), uv);
+          lines += smoothstep(size * 5.0, vec2(0.0), uv) * 0.4 * battery;
+          return clamp(lines.x + lines.y, 0.0, 3.0);
       }
 
       void main() {
-          float mr = min(uResolution.x, uResolution.y);
-          vec2 uv = (vUv.xy * 2.0 - 1.0) * uResolution.xy / mr;
+          vec2 uv = (vUv.xy * 2.0 - 1.0); // UV範圍 [-1, 1]
+          float aspect = uResolution.x / uResolution.y; // 寬高比（1920/1080 ≈ 1.777）
+          uv.x *= aspect; // 根據寬高比校正 X 座標
 
-          // 增強的細緻動態噪點
-          float staticNoise1 = noise(uv * 150.0 + uTime * 12.0) * 0.15;
-          float staticNoise2 = noise(uv * 100.0 - uTime * 8.0) * 0.12;
-          float staticNoise3 = noise(uv * 200.0 + uTime * 15.0) * 0.1;
-          float combinedNoise = staticNoise1 + staticNoise2 + staticNoise3;
+          float battery = 1.0;
+          vec3 col = vec3(0.0, 0.0, 0.55); // 深藍背景
 
-          // 背景噪聲（輕微彩虹效果）
-          float noiseVal = noise(uv + uTime * 0.05) * 0.1;
-          vec3 noiseColor = vec3(
-              noiseVal * 0.6,
-              noiseVal * 0.4,
-              noiseVal * 0.8
-          );
-
-          // 波形效果
-          float d = -uTime * 0.5;
-          float a = 0.0;
-          for (float i = 0.0; i < 8.0; ++i) {
-              a += cos(i - d - a * uv.x);
-              d += sin(uv.y * i + a);
-          }
-          d += uTime * 0.5;
-
-          vec3 waveColor = vec3(
-              cos(uv.y * d) * 0.8 + 0.9,
-              cos(uv.x * a) * 0.6 + 0.8,
-              cos(a + d) * 0.4 + 0.9
-          );
-
-          // 混合所有效果
-          vec3 col = mix(vec3(0.2, 0.4, 0.6), waveColor, 0.9);
-          col = mix(col, noiseColor, 0.3);
-
-          // 加入更強的動態噪點
-          float noiseStrength = 0.35; // 增加整體噪點強度
-          col += vec3(combinedNoise * noiseStrength);
-
-          // 增加對比度
-          col = pow(col, vec3(0.95));
-
-          col = clamp(col, 0.0, 1.0);
+          // 網格效果，填滿整個畫面
+          uv.y = 3.0 / (abs(uv.y + 0.2) + 0.05); // 縮放 Y 座標以適應網格
+          uv.x *= uv.y * 1.0 / aspect; // 根據寬高比調整 X 座標
+          float gridVal = grid(uv, battery);
+          col = mix(col, vec3(1.0, 1.0, 1.0), gridVal); // 白色網格
 
           gl_FragColor = vec4(col, 1.0);
       }`,
       uniforms: {
         uTime: { value: 0 },
-        uColor: { value: new Color(0.3, 0.2, 0.5) },
         uResolution: {
           value: new Color(
             gl.canvas.width,
@@ -121,9 +89,7 @@ export function Novatrix(props: NovatrixProps) {
 
     function update(t: number) {
       animateId = requestAnimationFrame(update);
-
       program.uniforms.uTime.value = props.frame * 0.01;
-
       renderer.render({ scene: mesh });
     }
 
