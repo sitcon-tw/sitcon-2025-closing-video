@@ -87,7 +87,8 @@ const SponsorItem = ({
                   objectFit: "contain",
                   objectPosition: "center",
                 }}
-              />{" "}
+                maxRetries={6}
+              />
             </div>
             <div
               style={{
@@ -208,16 +209,16 @@ export const Sponsor = () => {
           durationInFrames={300}
           style={{ margin: "24px" }}
         >
-        <SponsorItem 
-          title="特別感謝"
-          items={sponsorData.specialThanks}
-          style="mini" />
+          <SponsorItem
+            title="特別感謝"
+            items={sponsorData.specialThanks}
+            style="mini"
+          />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
           presentation={slide({ direction: "from-bottom" })}
           timing={linearTiming({ durationInFrames: 30 })}
         />
-        
       </TransitionSeries>
     </AbsoluteFill>
   );

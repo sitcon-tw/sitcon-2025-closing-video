@@ -81,6 +81,7 @@ const StaffItem = ({ member, index, many }: any) => {
           boxShadow: "0 0 24px rgba(0, 0, 0, 0.05)",
           transform: `scale(${scale})`,
         }}
+        maxRetries={6}
       />
       <div
         style={{

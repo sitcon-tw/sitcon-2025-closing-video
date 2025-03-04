@@ -52,6 +52,7 @@ export const Main = () => {
             style={{
               width: 200,
             }}
+            maxRetries={6}
           />
         </div>
       </Sequence>

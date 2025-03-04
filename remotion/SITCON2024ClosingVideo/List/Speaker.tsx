@@ -44,6 +44,7 @@ const SpeakerItem = ({ speaker, index }: any) => {
           objectFit: "cover",
           transform: `scale(${scale})`,
         }}
+        maxRetries={6}
       />
       <div
         style={{
