@@ -62,47 +62,47 @@ export const Main = () => {
         </TextFade>
       </Sequence>
 
-      <Sequence durationInFrames={400 * 10 + 800 + 30} from={80}>
+      <Sequence durationInFrames={400 * 10 + 1000 + 30} from={80}>
         <Staff />
       </Sequence>
 
-      <Sequence durationInFrames={80} from={4560}>
+      <Sequence durationInFrames={80} from={4780}>
         <TextFade>
           <h1 style={titleStyle}>議程講者</h1>
         </TextFade>
       </Sequence>
 
-      <Sequence durationInFrames={900} from={4560 + 80}>
+      <Sequence durationInFrames={900} from={4780 + 80}>
         <Speaker />
       </Sequence>
 
-      <Sequence durationInFrames={80} from={5540}>
+      <Sequence durationInFrames={80} from={5760}>
         <TextFade>
           <h1 style={titleStyle}>海報作者</h1>
         </TextFade>
       </Sequence>
 
-      <Sequence durationInFrames={300} from={5540 + 80}>
+      <Sequence durationInFrames={300} from={5760 + 80}>
         <Poster />
       </Sequence>
 
-      <Sequence durationInFrames={80} from={5920}>
+      <Sequence durationInFrames={80} from={6140}>
         <TextFade>
           <h1 style={titleStyle}>合作夥伴</h1>
         </TextFade>
       </Sequence>
 
-      <Sequence durationInFrames={8 * 300 + 30} from={6000}>
+      <Sequence durationInFrames={8 * 300 + 30} from={6140 + 80}>
         <Sponsor />
       </Sequence>
 
-      <Sequence durationInFrames={80} from={8200}>
+      <Sequence durationInFrames={80} from={8370}>
         <TextFade>
           <h1 style={titleStyle}>個人贊助</h1>
         </TextFade>
       </Sequence>
 
-      <Sequence durationInFrames={400} from={8200 + 80}>
+      <Sequence durationInFrames={400} from={8370 + 80}>
         <Donate />
       </Sequence>
     </AbsoluteFill>
