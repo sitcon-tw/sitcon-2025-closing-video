@@ -18,6 +18,7 @@
     "@remotion/lambda": "^4.0.270",
     "@remotion/paths": "^4.0.270",
     "@remotion/player": "^4.0.270",
+    "@remotion/preload": "4.0.270",
     "@remotion/shapes": "^4.0.270",
     "@remotion/tailwind": "^4.0.270",
     "@remotion/transitions": "^4.0.270",

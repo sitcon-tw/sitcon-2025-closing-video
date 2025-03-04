@@ -3,7 +3,12 @@ import { slide } from "@remotion/transitions/slide";
 import React from "react";
 import { AbsoluteFill, Img, interpolate, useCurrentFrame } from "remotion";
 import SessionData from "../../Data/sessions.json";
+import { preloadImage } from "@remotion/preload";
 import { Mic } from "lucide-react";
+
+SessionData.speakers
+  .filter((x) => x.zh.name !== "" && x.zh.name !== "TBA")
+  .map((x) => preloadImage(x.avatar));
 
 const SpeakerItem = ({ speaker, index }: any) => {
   const frame = useCurrentFrame();
@@ -45,6 +50,7 @@ const SpeakerItem = ({ speaker, index }: any) => {
           transform: `scale(${scale})`,
         }}
         maxRetries={6}
+        delayRenderTimeoutInMilliseconds={60 * 1000}
       />
       <div
         style={{
