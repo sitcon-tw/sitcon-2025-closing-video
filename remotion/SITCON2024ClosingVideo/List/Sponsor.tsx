@@ -79,7 +79,7 @@ const SponsorItem = ({
                 src={
                   x.image.startsWith("https")
                     ? x.image
-                    : `https://sitcon.org/2024/sponsor/${x.image}`
+                    : `https://sitcon.org/2025/sponsor/${x.image}`
                 }
                 style={{
                   width: style === "large" ? "450px" : "300px",
@@ -127,7 +127,7 @@ export const Sponsor = () => {
             items={[
               {
                 title: "SITCON 學生計算機年會籌備團隊",
-                image: "https://sitcon.org/2024/website/SITCON_green.svg",
+                image: "https://sitcon.org/2025/sponsor/sitcon.png",
               },
             ]}
           />
@@ -208,22 +208,16 @@ export const Sponsor = () => {
           durationInFrames={300}
           style={{ margin: "24px" }}
         >
-          <SponsorItem title="特別感謝" items={sponsorData.specialThanks} />
+        <SponsorItem 
+          title="特別感謝"
+          items={sponsorData.specialThanks}
+          style="mini" />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
           presentation={slide({ direction: "from-bottom" })}
           timing={linearTiming({ durationInFrames: 30 })}
         />
-        <TransitionSeries.Sequence
-          durationInFrames={300}
-          style={{ margin: "24px" }}
-        >
-          <SponsorItem title="媒體夥伴" items={sponsorData.mediaPartners} />
-        </TransitionSeries.Sequence>
-        <TransitionSeries.Transition
-          presentation={slide({ direction: "from-bottom" })}
-          timing={linearTiming({ durationInFrames: 30 })}
-        />
+        
       </TransitionSeries>
     </AbsoluteFill>
   );

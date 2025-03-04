@@ -32,12 +32,11 @@ export const Poster = () => {
   const frame = useCurrentFrame();
   const y = interpolate(frame, [0, 30], [100, 80]);
   const authors = [
-    "tudo",
-    "王昱智 / 王子杰 / 白雋揚",
-    "Jiawei",
-    "陳妍姍",
-    "恩恩",
-    "Lily",
+    "A1u",
+    "Wu, Tai-Cheng",
+    "Amy",
+    "Hinagiku Dev",
+    "鱸魚",
   ];
 
   return (

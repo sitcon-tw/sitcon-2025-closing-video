@@ -48,7 +48,7 @@ export const Main = () => {
           }}
         >
           <Img
-            src="https://sitcon.org/2024/logo_2024.png"
+            src="https://i.ibb.co/rKSLy9Zm/SITCON2025-LOGO-modified.png"
             style={{
               width: 200,
             }}
@@ -91,17 +91,17 @@ export const Main = () => {
         </TextFade>
       </Sequence>
 
-      <Sequence durationInFrames={9 * 300 + 30} from={6000}>
+      <Sequence durationInFrames={8 * 300 + 30} from={6000}>
         <Sponsor />
       </Sequence>
 
-      <Sequence durationInFrames={80} from={8500}>
+      <Sequence durationInFrames={80} from={8200}>
         <TextFade>
           <h1 style={titleStyle}>個人贊助</h1>
         </TextFade>
       </Sequence>
 
-      <Sequence durationInFrames={400} from={8500 + 80}>
+      <Sequence durationInFrames={400} from={8200 + 80}>
         <Donate />
       </Sequence>
     </AbsoluteFill>
