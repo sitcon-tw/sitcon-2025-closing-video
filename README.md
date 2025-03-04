@@ -1,4 +1,4 @@
-# SITCON 2024 Closing Video
+# SITCON 2025 Closing Video
 
 ## Getting Started
 

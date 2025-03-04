@@ -1,5 +1,5 @@
 import { Composition } from "remotion";
-import { Main } from "./SITCON2024ClosingVideo/Main";
+import { Main } from "./SITCON2025ClosingVideo/Main";
 import {
   COMP_NAME,
   DURATION_IN_FRAMES,

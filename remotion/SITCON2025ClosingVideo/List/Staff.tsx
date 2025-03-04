@@ -1,6 +1,17 @@
-import { linearTiming, TransitionSeries } from "@remotion/transitions";
+import {
+  linearTiming,
+  TransitionSeries,
+  springTiming,
+} from "@remotion/transitions";
 import { slide } from "@remotion/transitions/slide";
-import { AbsoluteFill, Img, interpolate, useCurrentFrame } from "remotion";
+import {
+  AbsoluteFill,
+  Img,
+  interpolate,
+  useCurrentFrame,
+  spring,
+  useVideoConfig,
+} from "remotion";
 import React from "react";
 import StaffData from "../../Data/staff.json";
 import { UsersRound } from "lucide-react";
@@ -11,18 +22,40 @@ const GroupDescriptionLetter = ({
   text: string;
   index: number;
 }) => {
+  const { fps } = useVideoConfig();
   const frame = useCurrentFrame();
-  const opacity = interpolate(frame, [index * 2 + 30, index * 2 + 40], [0, 1]);
+  const opacity = spring({
+    frame: frame - (index * 2 + 30),
+    fps,
+    config: {
+      stiffness: 80,
+    },
+    durationInFrames: 40,
+    from: 0,
+    to: 1,
+  });
   const blur = Math.max(
     interpolate(frame, [index * 2 + 30, index * 2 + 40], [5, 0]),
     0
   );
+  const y = spring({
+    frame: frame - (index * 2 + 30),
+    fps,
+    config: {
+      stiffness: 80,
+    },
+    durationInFrames: 40,
+    from: 30,
+    to: 0,
+  });
 
   return (
     <span
       style={{
         opacity,
         filter: `blur(${blur}px)`,
+        transform: `translateY(${y}px)`,
+        display: "inline-block",
       }}
     >
       {text}
@@ -46,6 +79,7 @@ const GroupDescription = ({ text }: { text: string }) => {
   );
 };
 const StaffItem = ({ member, index, many }: any) => {
+  const { fps } = useVideoConfig();
   const frame = useCurrentFrame();
   const opacity = interpolate(frame, [index * 5 + 30, index * 5 + 60], [0, 1]);
   const y = interpolate(frame, [30, 60], many ? [300, 280] : [100, 80]);
@@ -53,11 +87,16 @@ const StaffItem = ({ member, index, many }: any) => {
     interpolate(frame, [index * 5 + 30, index * 5 + 60], [10, 0]),
     0
   );
-  const scale = Math.min(
-    interpolate(frame, [index * 5 + 30, index * 5 + 60], [0.5, 1]),
-    1
-  );
-
+  const scale = spring({
+    frame: frame - (index * 5 + 30),
+    fps,
+    config: {
+      stiffness: 80,
+    },
+    durationInFrames: 40,
+    from: 0,
+    to: 1,
+  });
   return (
     <div
       key={index}
@@ -81,7 +120,6 @@ const StaffItem = ({ member, index, many }: any) => {
           boxShadow: "0 0 24px rgba(0, 0, 0, 0.05)",
           transform: `scale(${scale})`,
         }}
-        maxRetries={6}
       />
       <div
         style={{
@@ -116,12 +154,17 @@ export const Staff = () => {
       <TransitionSeries>
         <TransitionSeries.Transition
           presentation={slide({ direction: "from-bottom" })}
-          timing={linearTiming({ durationInFrames: 30 })}
+          timing={springTiming({
+            config: {
+              damping: 100,
+            },
+            durationInFrames: 40,
+          })}
         />
         {StaffData.map((group, index) => (
           <>
             <TransitionSeries.Sequence
-              durationInFrames={group.group === "場務組" ? 800 : 400}
+              durationInFrames={group.group === "場務組" ? 1000 : 400}
               key={index}
             >
               <div
