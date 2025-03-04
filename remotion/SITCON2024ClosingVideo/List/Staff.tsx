@@ -53,6 +53,10 @@ const StaffItem = ({ member, index, many }: any) => {
     interpolate(frame, [index * 5 + 30, index * 5 + 60], [10, 0]),
     0
   );
+  const scale = Math.min(
+    interpolate(frame, [index * 5 + 30, index * 5 + 60], [0.5, 1]),
+    1
+  );
 
   return (
     <div
@@ -75,6 +79,7 @@ const StaffItem = ({ member, index, many }: any) => {
           objectFit: "cover",
           borderRadius: "50%",
           boxShadow: "0 0 24px rgba(0, 0, 0, 0.05)",
+          transform: `scale(${scale})`,
         }}
       />
       <div

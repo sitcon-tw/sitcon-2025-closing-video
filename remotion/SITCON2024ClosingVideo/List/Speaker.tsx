@@ -17,6 +17,10 @@ const SpeakerItem = ({ speaker, index }: any) => {
     interpolate(frame, [index * 10 + 30, index * 10 + 60], [10, 0]),
     0
   );
+  const scale = Math.min(
+    interpolate(frame, [index * 5 + 30, index * 5 + 60], [0.5, 1]),
+    1
+  );
   return (
     <div
       style={{
@@ -38,6 +42,7 @@ const SpeakerItem = ({ speaker, index }: any) => {
           borderRadius: "9999em",
           boxShadow: "0 0 24px rgba(0, 0, 0, 0.05)",
           objectFit: "cover",
+          transform: `scale(${scale})`,
         }}
       />
       <div
